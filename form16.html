@@ -24,10 +24,11 @@
 
     <section>
       <h1>Форма регистрации</h1>
-      <input type="text" placeholder="Как тебя зовут?" minlength="2" maxlength="20" required>
+      <input type="text" name="username" id="username" placeholder="Как тебя зовут?" minlength="2" maxlength="20"
+        required>
     </section>
     <section>
-      <input type="email" placeholder="Введи электронную почту" required>
+      <input type="email" name="email" id="email" placeholder="Введи электронную почту" required>
     </section>
     <section>
       <input type="number" placeholder="Сколько тебе лет?" required>
@@ -61,19 +62,36 @@
     <section>
       <label for="">Введите пароль</label>
       <div>
-        <input type="password" minlength="8" required>
+        <input type="password" placeholder="Введите пароль" minlength="8" pattern="^[a-zA-Z]+$" required>
       </div>
     </section>
 
+    <!-- Чекбокс для согласия с условиями -->
     <section>
-      <input type="checkbox" required>
-      <label for="">Разрешаю обработку данных</label>
+      <input type="checkbox" name="agreeTerms" id="agreeTerms">
+      <label for="agreeTerms">Разрешаю обработку данных</label>
     </section>
-
-    <button type="submit">Отправить</button>
+    <!-- Кнопка отправки, изначально заблокирована -->
+    <button type="submit" name="submitBtn" id="submitBtn" disabled>Отправить</button>
 
   </form>
-  <script></script>
+  <script>
+    //Отмена действия по умолчанию для submit
+    form.addEventListener('submit', function (evt) {
+      evt.preventDefault();
+    });
+
+    // разблокировать чекбокс
+    document.getElementById('agreeTerms').addEventListener('change', function () {
+      // Получаем кнопку отправки и чекбокс
+      let submitBtn = document.getElementById('submitBtn');
+      let agreeTermsCheckbox = document.getElementById('agreeTerms');
+
+      // Разблокируем или блокируем кнопку в зависимости от состояния чекбокса
+      submitBtn.disabled = !agreeTermsCheckbox.checked;
+    });
+
+  </script>
 </body>
 
 </html>
