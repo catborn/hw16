@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form16</title>
+  <style>
+    * {
+      margin: 0.5%;
+      /* font: 1.2rem "Fira Sans", sans-serif; */
+      font: small-caps bold 16px sans-serif;
+    }
+
+    h1 {
+      color: darkblue;
+    }
+  </style>
+</head>
+
+<body>
+
+  <form>
+
+    <section>
+      <h1>Форма регистрации</h1>
+      <input type="text" placeholder="Как тебя зовут?" minlength="2" maxlength="20" required>
+    </section>
+    <section>
+      <input type="email" placeholder="Введи электронную почту" required>
+    </section>
+    <section>
+      <input type="number" placeholder="Сколько тебе лет?" required>
+    </section>
+
+    <section>
+      <legend>Выберите пол</legend>
+      <div>
+        <input type="radio" name="gender" value="Мужчина" checked>
+        <label for="">Мужчина</label>
+      </div>
+      <div>
+        <input type="radio" name="gender" value="Женщина">
+        <label for="">Женщина</label>
+      </div>
+    </section>
+
+    <section>
+      <h2>Выбор профессии</h2>
+      <select name="" id="" placeholder="Выберите профессию" required>
+        <option value="">Врач</option>
+        <option value="">Программист</option>
+        <option value="">Учитель</option>
+        <option value="">Дизайнер</option>
+        <option value="">Инженер</option>
+        <option value="">Продавец</option>
+        <option value="">Другое</option>
+      </select>
+    </section>
+
+    <section>
+
+    </section>
+
+  </form>
+  <script></script>
+</body>
+
+</html>
