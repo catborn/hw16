@@ -62,7 +62,8 @@
     <section>
       <label for="">Введите пароль</label>
       <div>
-        <input type="password" placeholder="Введите пароль" minlength="8" pattern="^[a-zA-Z]+$" required>
+        <input type="password" placeholder="Введите пароль" minlength="8" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+          required>
       </div>
     </section>
 
