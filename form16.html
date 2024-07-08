@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Form16</title>
+  <title>HWForm16</title>
   <style>
     * {
       margin: 0.5%;
@@ -13,78 +13,50 @@
     }
 
     h1 {
-      color: palevioletred;
+      color: green;
+    }
+
+    .error {
+      color: red;
+      display: none;
+      font-size: 11px;
     }
   </style>
 </head>
 
 <body>
-
-  <form name="myForm" id="">
-
+  <form id="myForm">
     <section>
       <h1>Форма регистрации</h1>
-      <input type="text" name="username" id="username" placeholder="Как тебя зовут?" minlength="2" maxlength="20"
-        required>
+      <!-- Поля формы -->
+      <input type="text" name="username" id="username" placeholder="Имя пользователя">
       <span class="error" id="usernameError"></span>
     </section>
 
     <section>
-      <input type="email" name="email" id="email" placeholder="Введи электронную почту" required>
+      <input type="email" name="email" id="email" placeholder="Email">
+      <span class="error" id="emailError"></span>
     </section>
+
     <section>
       <input type="number" placeholder="Возраст" min="18" max="99" required>
+      <span class="error" id="ageError"></span>
     </section>
 
     <section>
-      <legend>Выберите пол</legend>
-      <div>
-        <input type="radio" name="gender" value="Мужчина" checked>
-        <label for="">Мужчина</label>
-      </div>
-      <div>
-        <input type="radio" name="gender" value="Женщина">
-        <label for="">Женщина</label>
-      </div>
-    </section>
-
-    <section>
-      <h2>Выбор профессии</h2>
-      <select name="" id="" placeholder="Выберите профессию" required>
-        <option value="">Врач</option>
-        <option value="">Программист</option>
-        <option value="">Учитель</option>
-        <option value="">Дизайнер</option>
-        <option value="">Инженер</option>
-        <option value="">Продавец</option>
-        <option value="">Другое</option>
-      </select>
-    </section>
-
-    <section>
-      <label for="">Введите пароль</label>
-      <div>
-        <input type="password" placeholder="Введите пароль" minlength="8" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-          required>
-      </div>
-    </section>
-
-    <!-- Чекбокс для согласия с условиями -->
-    <section>
+      <!-- Чекбокс для согласия с условиями -->
       <input type="checkbox" name="agreeTerms" id="agreeTerms">
-      <label for="agreeTerms">Разрешаю обработку данных</label>
+      <label for="agreeTerms">Я согласен с условиями</label>
+      <span class="error" id="termsError"></span>
+    </section>
+    <section>
       <!-- Кнопка отправки, изначально заблокирована -->
       <button type="submit" name="submitBtn" id="submitBtn" disabled>Отправить</button>
     </section>
-
   </form>
-  <script>
-    //Отмена действия по умолчанию для submit
-    form.addEventListener('submit', function (evt) {
-      evt.preventDefault();
-    });
 
-    // разблокировать чекбокс
+  <script>
+    // обработка согласия
     document.getElementById('agreeTerms').addEventListener('change', function () {
       // Получаем кнопку отправки и чекбокс
       let submitBtn = document.getElementById('submitBtn');
@@ -94,22 +66,19 @@
       submitBtn.disabled = !agreeTermsCheckbox.checked;
     });
 
-    // сброс формы
-    form.addEventListener('submit', function (evt) {
-      evt.preventDefault();
-      form.reset();
-    });
-
-    // отображаем ошибки
+    // обработка ошибок
     const form = document.forms.myForm;
     const userNameInput = form.elements.username;
+    const emailInput = form.elements.email;
+    const agreeTermsCheckbox = form.elements.agreeTerms;
 
     const userNameError = document.getElementById('usernameError');
+    const emailError = document.getElementById('emailError');
+    const termsError = document.getElementById('termsError');
 
     form.addEventListener('submit', function (evt) {
       evt.preventDefault();
       let hasError = false;
-
 
       // Очистка предыдущих сообщений об ошибках
       userNameError.style.display = 'none';
@@ -143,6 +112,7 @@
       let regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$/;
       return regex.test(email);
     }
+    // 
   </script>
 </body>
 
