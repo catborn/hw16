@@ -39,8 +39,33 @@
     </section>
 
     <section>
-      <input type="number" placeholder="Возраст" min="18" max="99" required>
+      <input type="number" name="age" id="age" placeholder="Возраст" min="18" max="99" required>
       <span class="error" id="ageError"></span>
+    </section>
+
+    <section>
+      <legend>Выберите пол</legend>
+      <div>
+        <input type="radio" name="gender" value="Мужчина" checked>
+        <label for="">Мужчина</label>
+      </div>
+      <div>
+        <input type="radio" name="gender" value="Женщина">
+        <label for="">Женщина</label>
+      </div>
+    </section>
+
+    <section>
+      <h2>Выбор профессии</h2>
+      <select name="" id="" placeholder="Выберите профессию" required>
+        <option value="">Врач</option>
+        <option value="">Программист</option>
+        <option value="">Учитель</option>
+        <option value="">Дизайнер</option>
+        <option value="">Инженер</option>
+        <option value="">Продавец</option>
+        <option value="">Другое</option>
+      </select>
     </section>
 
     <section>
@@ -70,10 +95,12 @@
     const form = document.forms.myForm;
     const userNameInput = form.elements.username;
     const emailInput = form.elements.email;
+    const ageInput = form.elements.age;
     const agreeTermsCheckbox = form.elements.agreeTerms;
 
     const userNameError = document.getElementById('usernameError');
     const emailError = document.getElementById('emailError');
+    const ageError = document.getElementById('ageError')
     const termsError = document.getElementById('termsError');
 
     form.addEventListener('submit', function (evt) {
@@ -83,6 +110,7 @@
       // Очистка предыдущих сообщений об ошибках
       userNameError.style.display = 'none';
       emailError.style.display = 'none';
+      ageError.style.display = 'none';
       termsError.style.display = 'none';
 
       if (userNameInput.value === '') {
@@ -94,6 +122,12 @@
       if (validateEmail(emailInput.value) === false) {
         emailError.textContent = 'Введите корректный email.';
         emailError.style.display = 'block';
+        hasError = true;
+      }
+
+      if (ageInput.value === '') {
+        ageError.textContent = 'Введите возраст.';
+        ageError.style.display = 'block';
         hasError = true;
       }
 
