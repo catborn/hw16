@@ -20,18 +20,20 @@
 
 <body>
 
-  <form>
+  <form name="myForm" id="">
 
     <section>
       <h1>Форма регистрации</h1>
       <input type="text" name="username" id="username" placeholder="Как тебя зовут?" minlength="2" maxlength="20"
         required>
+      <span class="error" id="usernameError"></span>
     </section>
+
     <section>
       <input type="email" name="email" id="email" placeholder="Введи электронную почту" required>
     </section>
     <section>
-      <input type="number" placeholder="Сколько тебе лет?" required>
+      <input type="number" placeholder="Возраст" min="18" max="99" required>
     </section>
 
     <section>
@@ -98,6 +100,49 @@
       form.reset();
     });
 
+    // отображаем ошибки
+    const form = document.forms.myForm;
+    const userNameInput = form.elements.username;
+
+    const userNameError = document.getElementById('usernameError');
+
+    form.addEventListener('submit', function (evt) {
+      evt.preventDefault();
+      let hasError = false;
+
+
+      // Очистка предыдущих сообщений об ошибках
+      userNameError.style.display = 'none';
+      emailError.style.display = 'none';
+      termsError.style.display = 'none';
+
+      if (userNameInput.value === '') {
+        userNameError.textContent = 'Введите имя пользователя.';
+        userNameError.style.display = 'block';
+        hasError = true;
+      }
+
+      if (validateEmail(emailInput.value) === false) {
+        emailError.textContent = 'Введите корректный email.';
+        emailError.style.display = 'block';
+        hasError = true;
+      }
+
+      if (agreeTermsCheckbox.checked === false) {
+        termsError.textContent = 'Необходимо согласие с условиями.';
+        termsError.style.display = 'block';
+        hasError = true;
+      }
+
+      if (hasError === false) {
+        alert('Форма успешно отправлена!');
+      }
+    });
+
+    function validateEmail(email) {
+      let regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$/;
+      return regex.test(email);
+    }
   </script>
 </body>
 
