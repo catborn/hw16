@@ -46,12 +46,12 @@
     <section>
       <legend>Выберите пол</legend>
       <div>
-        <input type="radio" name="gender" value="Мужчина" checked>
-        <label for="">Мужчина</label>
+        <input type="radio" id="male" name="gender" value="Мужчина" checked>
+        <label for="male">Мужчина</label>
       </div>
       <div>
-        <input type="radio" name="gender" value="Женщина">
-        <label for="">Женщина</label>
+        <input type="radio" id="female" name="gender" value="Женщина">
+        <label for="female">Женщина</label>
       </div>
     </section>
 
@@ -146,7 +146,7 @@
       let regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$/;
       return regex.test(email);
     }
-    // 
+
   </script>
 </body>
 
