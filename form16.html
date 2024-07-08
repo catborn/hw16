@@ -109,8 +109,9 @@
     const emailError = document.getElementById('emailError');
     const ageError = document.getElementById('ageError')
     const termsError = document.getElementById('termsError');
-
+    // добавление обработчика события submit
     form.addEventListener('submit', function (evt) {
+      // отмена стандартного поведениz
       evt.preventDefault();
       let hasError = false;
 
