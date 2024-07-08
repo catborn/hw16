@@ -15,6 +15,11 @@
       color: green;
     }
 
+    span {
+      font-size: 8px;
+      color: grey
+    }
+
     .error {
       color: red;
       display: none;
@@ -55,20 +60,25 @@
     </section>
 
     <section>
-      <h2>Выбор профессии</h2>
-      <select name="" id="" placeholder="Выберите профессию" required>
-        <option value="">Врач</option>
-        <option value="">Программист</option>
-        <option value="">Учитель</option>
-        <option value="">Дизайнер</option>
-        <option value="">Инженер</option>
-        <option value="">Продавец</option>
-        <option value="">Другое</option>
+      <div>
+        <label for="profession">Выбор профессии</label>
+      </div>
+      <select name="profession" id="profession" placeholder="Выберите профессию" required>
+        <option value="Врач">Врач</option>
+        <option value="Программист">Программист</option>
+        <option value="Учитель">Учитель</option>
+        <option value="Дизайнер">Дизайнер</option>
+        <option value="Инженер">Инженер</option>
+        <option value="Продавец">Продавец</option>
+        <option value="Другое">Другое</option>
       </select>
     </section>
 
     <section>
       <label for="">Введите пароль</label>
+      <div>
+        <span>Пароль не менее 8 символов, минимум одна цифра и заглавная и строчная буквы</span>
+      </div>
       <div>
         <input type="password" placeholder="Введите пароль" minlength="8" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
           required>
@@ -98,13 +108,14 @@
       submitBtn.disabled = !agreeTermsCheckbox.checked;
     });
 
-    // обработка ошибок
+    // элементы ввода данных формы
     const form = document.forms.myForm;
     const userNameInput = form.elements.username;
     const emailInput = form.elements.email;
     const ageInput = form.elements.age;
+    const profession = form.elements.profession;
     const agreeTermsCheckbox = form.elements.agreeTerms;
-
+    // обработка ошибок
     const userNameError = document.getElementById('usernameError');
     const emailError = document.getElementById('emailError');
     const ageError = document.getElementById('ageError')
@@ -147,6 +158,10 @@
 
       if (hasError === false) {
         alert('Форма успешно отправлена!');
+        console.log(userNameInput.value)
+        console.log(emailInput.value)
+        console.log(ageInput.value)
+        console.log(profession.value)
       }
     });
 
