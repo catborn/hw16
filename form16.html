@@ -69,6 +69,14 @@
     </section>
 
     <section>
+      <label for="">Введите пароль</label>
+      <div>
+        <input type="password" placeholder="Введите пароль" minlength="8" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+          required>
+      </div>
+    </section>
+
+    <section>
       <!-- Чекбокс для согласия с условиями -->
       <input type="checkbox" name="agreeTerms" id="agreeTerms">
       <label for="agreeTerms">Я согласен с условиями</label>
