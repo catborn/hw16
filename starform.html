@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car</title>
+</head>
+
+<body>
+  <h1>Калькулятор стоимости автомобиля</h1>
+  <form id="carCalculator">
+    <label for="brand">Марка автомобиля:</label>
+    <select id="brand" name="brand">
+      <option value="">Выберите марку</option>
+      <option value="Reno">Reno</option>
+      <option value="Opel">Opel</option>
+      <option value="Mazda">Mazda</option>
+      <option value="Jaguar">Jaguar</option>
+    </select>
+
+    <label for="model">Модель автомобиля:</label>
+    <select id="model" name="model">
+      <option value="">Сначала выберите марку</option>
+    </select>
+
+    <label>Тип топлива:</label>
+    <label><input type="radio" name="fuel" value="gasoline" checked> Бензин</label>
+    <label><input type="radio" name="fuel" value="diesel"> Дизель</label>
+    <label><input type="radio" name="fuel" value="gas"> Газ</label>
+    <label><input type="radio" name="fuel" value="electric"> Электричество</label>
+
+    <label for="engineVolume">Объем двигателя (л):</label>
+    <input type="number" id="engineVolume" name="engineVolume" min="1.1" max="3.5" step="0.1" value="1.5">
+
+    <label>Состояние автомобиля:</label>
+    <label><input type="radio" name="condition" value="new" checked> Новый</label>
+    <label><input type="radio" name="condition" value="used"> Подержанный</label>
+
+    <div id="ownersBlock" class="hidden">
+      <label>Количество владельцев:</label>
+      <label><input type="radio" name="owners" value="1-2"> 1-2 владельца</label>
+      <label><input type="radio" name="owners" value="3+"> Более 3-х владельцев</label>
+    </div>
+
+    <label>Способ оплаты:</label>
+    <label><input type="radio" name="payment" value="card" checked> Картой</label>
+    <label><input type="radio" name="payment" value="cash"> Наличными</label>
+    <label><input type="radio" name="payment" value="company"> Счет на юридическое лицо</label>
+
+    <label for="color">Цвет автомобиля:</label>
+    <select id="color" name="color">
+      <option value="white">Белый</option>
+      <option value="black">Черный</option>
+      <option value="red">Красный</option>
+      <option value="blue">Синий</option>
+    </select>
+  </form>
+
+  <h2>Расчетная стоимость: <span id="price">0</span> руб.</h2>
+</body>
+
+</html>
